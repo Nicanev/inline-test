@@ -1,14 +1,17 @@
+<script setup>
+import { register } from 'swiper/element/bundle'
+import ProductCard from './ProductCard.vue'
+
+register()
+</script>
+
 <template>
   <section class="product-recommendations">
     <div class="product-recommendations__container">
       <h2 class="product-recommendations__title">С этим товаром покупают</h2>
       <swiper-container slides-per-view="4" space-between="10" loop="true">
         <swiper-slide v-for="(item, index) in items" :key="index">
-          <div class="product-recommendation">
-            <img :src="item.image" :alt="item.name" />
-            <h3 class="product-recommendation__title">{{ item.name }}</h3>
-            <p class="product-recommendation__price">{{ item.price }}</p>
-          </div>
+          <ProductCard :item="item" />
         </swiper-slide>
       </swiper-container>
     </div>
@@ -16,21 +19,50 @@
 </template>
 
 <script>
-import { register } from 'swiper/element/bundle'
-register()
-
 export default {
   data() {
     return {
       items: [
-        { name: 'Товар 1', price: '1000 ₽', image: 'path/to/image1.jpg' },
-        { name: 'Товар 2', price: '1200 ₽', image: 'path/to/image2.jpg' },
-        { name: 'Товар 3', price: '800 ₽', image: 'path/to/image3.jpg' },
-        { name: 'Товар 3', price: '800 ₽', image: 'path/to/image3.jpg' },
-        { name: 'Товар 3', price: '800 ₽', image: 'path/to/image3.jpg' },
-        { name: 'Товар 3', price: '800 ₽', image: 'path/to/image3.jpg' },
-        { name: 'Товар 3', price: '800 ₽', image: 'path/to/image3.jpg' },
-        { name: 'Товар 3', price: '800 ₽', image: 'path/to/image3.jpg' }
+        {
+          name: 'Молоко 3,2 %',
+          price: '1000 ₽',
+          value: '0,93 л',
+          producer: 'Вадима Рошки',
+          image:
+            'https://github.com/Nicanev/inline-test/blob/main/src/assets/images/products/product1.png?raw=true'
+        },
+        {
+          name: 'Хлеб пшеничный',
+          price: '1200 ₽',
+          value: '930 г',
+          producer: 'Дарьи и Марии',
+          image:
+            'https://github.com/Nicanev/inline-test/blob/main/src/assets/images/products/product2.png?raw=true'
+        },
+        {
+          name: 'Яйца куриные',
+          price: '800 ₽',
+          value: '10 шт',
+          producer: 'Евгения Рошаль',
+          image:
+            'https://github.com/Nicanev/inline-test/blob/main/src/assets/images/products/product3.png?raw=true'
+        },
+        {
+          name: 'Масло сливочное 82 %',
+          price: '800 ₽',
+          value: '250 г',
+          producer: 'Евгения Рошаль',
+          image:
+            'https://github.com/Nicanev/inline-test/blob/main/src/assets/images/products/product4.png?raw=true'
+        },
+        {
+          name: 'Масло сливочное 82 %',
+          price: '800 ₽',
+          value: '250 г',
+          producer: 'Евгения Рошаль',
+          image:
+            'https://github.com/Nicanev/inline-test/blob/main/src/assets/images/products/product4.png?raw=true'
+        }
       ]
     }
   }
@@ -39,25 +71,12 @@ export default {
 
 <style lang="scss" scoped>
 .product-recommendations {
+  margin-bottom: 1.8rem;
   &__title {
     font-size: 2.2rem;
     font-weight: 500;
+    margin-bottom: 3rem;
+    margin-top: 5.4rem;
   }
-}
-
-.product-recommendations__container {
-  /* Стили для контейнера слайдера */
-}
-
-.product-recommendation {
-  /* Стили для элементов слайдера */
-}
-
-.product-recommendation__title {
-  /* Стили для заголовка товара */
-}
-
-.product-recommendation__price {
-  /* Стили для цены товара */
 }
 </style>
