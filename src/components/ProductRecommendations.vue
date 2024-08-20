@@ -9,7 +9,7 @@ register()
   <section class="product-recommendations">
     <div class="product-recommendations__container">
       <h2 class="product-recommendations__title">С этим товаром покупают</h2>
-      <swiper-container slides-per-view="4" space-between="10" loop="true">
+      <swiper-container slides-per-view="auto" space-between="10" :breakpoints="breakpoints">
         <swiper-slide v-for="(item, index) in items" :key="index">
           <ProductCard :item="item" />
         </swiper-slide>
@@ -25,7 +25,7 @@ export default {
       items: [
         {
           name: 'Молоко 3,2 %',
-          price: '1000 ₽',
+          price: '95 ₽',
           value: '0,93 л',
           producer: 'Вадима Рошки',
           image:
@@ -33,7 +33,7 @@ export default {
         },
         {
           name: 'Хлеб пшеничный',
-          price: '1200 ₽',
+          price: '95 ₽',
           value: '930 г',
           producer: 'Дарьи и Марии',
           image:
@@ -41,7 +41,7 @@ export default {
         },
         {
           name: 'Яйца куриные',
-          price: '800 ₽',
+          price: '120 ₽',
           value: '10 шт',
           producer: 'Евгения Рошаль',
           image:
@@ -49,21 +49,23 @@ export default {
         },
         {
           name: 'Масло сливочное 82 %',
-          price: '800 ₽',
-          value: '250 г',
-          producer: 'Евгения Рошаль',
-          image:
-            'https://github.com/Nicanev/inline-test/blob/main/src/assets/images/products/product4.png?raw=true'
-        },
-        {
-          name: 'Масло сливочное 82 %',
-          price: '800 ₽',
+          price: '290 ₽',
           value: '250 г',
           producer: 'Евгения Рошаль',
           image:
             'https://github.com/Nicanev/inline-test/blob/main/src/assets/images/products/product4.png?raw=true'
         }
-      ]
+      ],
+      breakpoints: {
+        320: {
+          slidesPerView: 1.3,
+          spaceBetween: 10
+        },
+        768: {
+          slidesPerView: 4,
+          spaceBetween: 10
+        }
+      }
     }
   }
 }

@@ -2,9 +2,15 @@
   <header class="header">
     <div class="header__container">
       <nav class="header__nav">
-        <RouterLink class="header__link header__link--active" to="">Описание</RouterLink>
-        <RouterLink class="header__link" to="">Отзывы</RouterLink>
-        <RouterLink class="header__link" to="">Откуда?</RouterLink>
+        <RouterLink class="header__link" to="/" v-slot="{ isActive }">
+          <span :class="{ 'header__link--active': isActive }">Описание</span>
+        </RouterLink>
+        <RouterLink class="header__link" to="/reviews" v-slot="{ isActive }">
+          <span :class="{ 'header__link--active': isActive }">Отзывы</span>
+        </RouterLink>
+        <RouterLink class="header__link" to="/where" v-slot="{ isActive }">
+          <span :class="{ 'header__link--active': isActive }">Откуда?</span>
+        </RouterLink>
       </nav>
     </div>
   </header>
@@ -31,7 +37,7 @@
     &--active::before {
       content: '';
       position: absolute;
-      bottom: -1.8rem;
+      bottom: -1.9rem;
       border-radius: 0.5rem;
       background-color: rgb(66, 159, 58);
       width: 100%;
