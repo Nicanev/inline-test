@@ -76,6 +76,11 @@ export default {
     font-weight: 600;
     color: white;
     border-radius: 0.5rem;
+    @media (max-width: 48em) {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
   }
   &__form {
     margin-top: 2rem;

@@ -32,6 +32,11 @@
     margin-top: 4.9rem;
     display: flex;
     justify-content: space-between;
+    @media (max-width: 48em) {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
   }
   &__text {
     max-width: 51.1rem;
