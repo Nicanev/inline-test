@@ -1,6 +1,12 @@
 <template>
   <div class="product-card">
     <img class="product-card__image" :src="item.image" :alt="item.name" />
+    <IconLike
+      :fill="isLiked ? 'red' : 'none'"
+      :stroke="isLiked ? 'red' : 'white'"
+      class="product-card__icon-like"
+      @click="toggleLike"
+    />
     <div class="product-card__info">
       <h3 class="product-card__title">{{ item.name }}</h3>
       <div class="product-card__producer">от {{ item.producer }}</div>
@@ -24,7 +30,9 @@
 </template>
 
 <script setup>
+import { ref } from 'vue'
 import IconCart from './icons/IconCart.vue'
+import IconLike from './icons/IconLike.vue'
 import IconPlus from './icons/IconPlus.vue'
 import IconStar from './icons/IconStar.vue'
 
@@ -34,14 +42,34 @@ const props = defineProps({
     required: true
   }
 })
+
+const isLiked = ref(false)
+
+const toggleLike = () => {
+  isLiked.value = !isLiked.value
+}
 </script>
 
 <style lang="scss" scoped>
 .product-card {
   border: 0.1rem solid rgb(222, 222, 222);
   border-radius: 1rem;
+  margin: 1rem;
+  position: relative;
   &__info {
     margin: 1rem 0 1.7rem 1.3rem;
+  }
+  &__icon-like {
+    display: block;
+    position: absolute;
+    top: 1.6rem;
+    right: 1.6rem;
+    width: 2rem;
+    height: 1.835rem;
+    cursor: pointer;
+    @media (max-width: 48em) {
+      display: none;
+    }
   }
   &__image {
     width: 100%;
@@ -100,7 +128,6 @@ const props = defineProps({
     border-radius: 0.8rem;
     box-shadow: 0rem 0.2rem 1rem 0.2rem rgba(0, 0, 0, 0.1);
     display: flex;
-    // align-items: center;
     width: 30rem;
     padding-top: 2.8rem;
     padding-right: 2.1rem;
