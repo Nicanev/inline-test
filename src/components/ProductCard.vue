@@ -79,6 +79,7 @@ const toggleLike = () => {
     font-size: 1.4rem;
     font-weight: 600;
     margin-bottom: 0.7rem;
+    white-space: nowrap;
   }
   &__producer {
     font-size: 1.2rem;
